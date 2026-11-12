@@ -1,0 +1,16 @@
+.app {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+.body {
+  padding: 1rem;
+}
+.gradientText {
+  background: linear-gradient(45deg, var(--accent), var(--accent-alt));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
