@@ -1,21 +1,50 @@
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import styles from "./Layout.module.css";
+
+const links = [
+  { to: "/", label: "Home" },
+  { to: "/product", label: "Products" },
+];
 
 function Layout() {
   const [connected, setConnected] = useState(false);
 
   useEffect(() => {
-    fetch('https://dummyjson.com/test')
+    fetch("https://dummyjson.com/test")
       .then(r => r.json())
-      .then(data => { if(data.status == "ok") setConnected(true); else setConnected(false)});
-  }, [])
+      .then(data => setConnected(data.status === "ok"))
+      .catch(() => setConnected(false));
+  }, []);
+
   return (
     <div className={styles.app}>
-      <h1>Mirror Study <span className={styles.gradientText}>(React)</span></h1>
-      <div>{connected ? "Successfully Connected!" : "Unsuccessful Connection :("}</div>
+      <header className={styles.header}>
+        <h1>
+          Mirror Study <span className={styles.gradientText}>(React)</span>
+        </h1>
+        <div style={{textAlign: "center"}}>{connected ? "Successfully Connected!" : "Unsuccessful Connection :("}</div>
+      </header>
+
       <div className={styles.body}>
-        <main>
+        <aside className={styles.sidebar}>
+          <nav className={styles.nav}>
+            {links.map(l => (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={l.to === "/"}
+                className={({ isActive }) =>
+                  isActive ? `${styles.link} ${styles.active}` : styles.link
+                }
+              >
+                {l.label}
+              </NavLink>
+            ))}
+          </nav>
+        </aside>
+
+        <main className={styles.content}>
           <Outlet />
         </main>
       </div>

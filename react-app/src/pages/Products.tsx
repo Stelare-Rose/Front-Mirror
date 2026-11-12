@@ -31,10 +31,13 @@ function Product() {
     return () => controller.abort();
   }, [limit, skip])
   return <>
-    {products.map(p => (<div key={p.id}>{p.title}, {p.price}$</div>))}
-    <section className={styles.buttons}>
-      <button onClick={() => goTo(Math.max(0, skip - limit))} disabled={skip === 0}>Prev</button>
-      <button onClick={() => goTo(skip + limit)} disabled={skip + limit > totalProducts}>Next</button>
+    <section className={styles.body}>
+      {products.map(p => (<div key={p.id}>{p.title} {p.price}$</div>))}
+      <section className={styles.buttons}>
+        <button onClick={() => goTo(Math.max(0, skip - limit))} disabled={skip === 0}>Prev</button>
+        <div>Page {Math.floor(skip/limit) + 1} of {Math.ceil(totalProducts/limit)}</div>
+        <button onClick={() => goTo(skip + limit)} disabled={skip + limit > totalProducts}>Next</button>
+      </section>
     </section>
   </>
 }

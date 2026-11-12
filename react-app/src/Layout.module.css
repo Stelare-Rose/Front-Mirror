@@ -14,3 +14,63 @@
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
+.header {
+  padding: 1rem 1.5rem;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  min-height: 0;
+}
+
+.sidebar {
+  padding: 1rem;
+  border-right: 1px solid color-mix(in srgb, var(--stable-accent) 30%, transparent);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.link {
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s ease;
+}
+
+.link:hover {
+  background: color-mix(in srgb, var(--stable-accent) 20%, transparent);
+}
+
+.active {
+  background: var(--stable-accent);
+  color: color-mix(in srgb, var(--stable-accent) 35%, black);
+  font-weight: 600;
+}
+
+.content {
+  padding: 1.5rem;
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--stable-accent) 30%, transparent);
+  }
+
+  .nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
