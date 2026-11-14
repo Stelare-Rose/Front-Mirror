@@ -27,7 +27,8 @@
 
 .sidebar {
   padding: 1rem;
-  border-right: 1px solid color-mix(in srgb, var(--stable-accent) 30%, transparent);
+  border-right: 1px solid
+    color-mix(in srgb, var(--stable-accent) 30%, transparent);
 }
 
 .nav {
@@ -56,7 +57,7 @@
 
 .content {
   padding: 1.5rem;
-  min-width: 0;
+  min-width: 80ch;
 }
 
 @media (max-width: 720px) {
@@ -66,7 +67,8 @@
 
   .sidebar {
     border-right: none;
-    border-bottom: 1px solid color-mix(in srgb, var(--stable-accent) 30%, transparent);
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--stable-accent) 30%, transparent);
   }
 
   .nav {

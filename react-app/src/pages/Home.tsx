@@ -3,13 +3,15 @@ import type { Product } from "../interfaces/products";
 import { registerRoute } from "../routeRegistry";
 import styles from './Home.module.css';
 
-function Home(){
+function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
     fetch('https://dummyjson.com/products')
-      .then(r => { if(!r.ok) throw new Error(`${r.status}`); 
-        return r.json()})
-      .then(data => { setProducts(data.products); console.log(data)})
+      .then(r => {
+        if (!r.ok) throw new Error(`${r.status}`);
+        return r.json()
+      })
+      .then(data => { setProducts(data.products); console.log(data) })
       .catch(err => console.log(err));
   }, [])
   console.log(products);
@@ -20,7 +22,6 @@ function Home(){
         <h3>Products</h3>
         <ul>
           <li>Product list with pagination (limit and skip)</li>
-          <li>Search by keyword with debounced input (/products/search)</li>
         </ul>
         <h3>Auth</h3>
         <ul>

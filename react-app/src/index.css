@@ -1,10 +1,11 @@
 :root {
-  --accent: #9BB0DE;
-  --accent-alt: #9B98D6;
-  --stable-accent: #DBB4D3;
-  --stable-accent-alt: #EDB7CA;
+  --accent: #9bb0de;
+  --accent-alt: #9b98d6;
+  --stable-accent: #dbb4d3;
+  --stable-accent-alt: #edb7ca;
 }
-a, a.active {
+a,
+a.active {
   color: var(--accent);
   transition: all 0.5s;
   text-decoration: none;
@@ -24,7 +25,9 @@ button {
   font: inherit;
   cursor: pointer;
 
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
 button:hover:not(:disabled) {
@@ -43,4 +46,58 @@ button:focus-visible {
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+input,
+textarea,
+select {
+  padding: 0.55rem 1.2rem;
+  margin: 1rem 0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+
+  border-color: color-mix(in srgb, var(--stable-accent-alt) 50%, transparent);
+  color: color-mix(in srgb, var(--stable-accent) 50%, black);
+  font: inherit;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+input:hover:not(:disabled),
+textarea:hover:not(:disabled),
+select:hover:not(:disabled) {
+  border-color: var(--stable-accent-alt);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--stable-accent-alt);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--stable-accent-alt);
+  outline-offset: 2px;
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0;
+  accent-color: var(--stable-accent-alt);
 }
